@@ -2,9 +2,11 @@
 
 internal class Day01 : IDay
 {
+    private string? _input;
+
     public async Task<long> FirstPart()
     {
-        using var reader = new StringReader(await File.ReadAllTextAsync("Days/Input/01.txt"));
+        using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
         int result = 0;
 
@@ -23,9 +25,16 @@ internal class Day01 : IDay
         return result;
     }
 
+    public async Task ReadInput()
+    {
+        _input = await File.ReadAllTextAsync("Days/Input/01.txt");
+    }
+
+
     public async Task<long> SecondPart()
     {
-        using var reader = new StringReader(await File.ReadAllTextAsync("Days/Input/01.txt"));
+        using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
+
         int[] sliding = { 0, 0, 0 };
         int result = 0;
 

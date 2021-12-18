@@ -16,6 +16,8 @@ foreach (IDay day in days)
     object? firstResult;
     object? secondResult;
 
+    await day.ReadInput();
+
     try
     {
         firstResult = await day.FirstPart();
