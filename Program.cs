@@ -1,20 +1,41 @@
-﻿using System.Diagnostics;
-using adventofcode_2021.Days;
+﻿using adventofcode_2021.Days;
 
-IDay day = new Day02();
+var days = AppDomain.CurrentDomain.GetAssemblies()
+    .SelectMany(s => s.GetTypes())
+    .Where(t => t.IsClass)
+    .Where(p => typeof(IDay).IsAssignableFrom(p))
+    .Select(Activator.CreateInstance).OfType<IDay>().ToArray();
 
-Console.WriteLine("-= {0} =-", day.GetType().Name);
 
-try
+Console.WriteLine("                               +--------------+--------------+");
+Console.WriteLine("                               |        FIRST |       SECOND |");
+Console.WriteLine("+------------------------------+--------------+--------------+");
+
+foreach (IDay day in days)
 {
-    var sw = Stopwatch.StartNew();
-    object firstResult = await day.FirstPart();
-    sw.Stop();
-    Console.WriteLine("First part: {0}, {1:N0}ms", firstResult, sw.ElapsedMilliseconds);
+    object? firstResult;
+    object? secondResult;
 
-    sw.Restart();
-    object secondResult = await day.SecondPart();
-    sw.Stop();
-    Console.WriteLine("Second part: {0}, {1:N0}ms", secondResult, sw.ElapsedMilliseconds);
+    try
+    {
+        firstResult = await day.FirstPart();
+    }
+    catch (NotImplementedException)
+    {
+        firstResult = null;
+    }
+
+    try
+    {
+        secondResult = await day.SecondPart();
+    }
+    catch (NotImplementedException)
+    {
+        secondResult = null;
+    }
+
+    Console.WriteLine("| {0:00} {1,-25} | {2,12} | {3,12} |", day.Day, day.Name, firstResult, secondResult);
+    Console.WriteLine("+------------------------------+--------------+--------------+");
 }
-catch (NotImplementedException) { }
+
+Console.WriteLine();

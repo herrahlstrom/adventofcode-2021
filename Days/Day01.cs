@@ -53,4 +53,8 @@ internal class Day01 : IDay
 
         return result;
     }
+
+    int IDay.Day => 1;
+
+    string IDay.Name => "Sonar sweep";
 }

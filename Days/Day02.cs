@@ -57,4 +57,8 @@ internal class Day02 : IDay
 
         return pos.X * pos.Y;
     }
+
+    int IDay.Day => 2;
+
+    string IDay.Name => "Dive";
 }

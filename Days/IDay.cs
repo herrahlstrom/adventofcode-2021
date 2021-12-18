@@ -2,6 +2,8 @@
 
 internal interface IDay
 {
+    int Day { get; }
+    string Name { get; }
     Task<long> FirstPart();
     Task<long> SecondPart();
 }
