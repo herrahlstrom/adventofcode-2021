@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
 using adventofcode_2021.Days;
 
-IDay day = new Day01();
+IDay day = new Day02();
+
+Console.WriteLine("-= {0} =-", day.GetType().Name);
 
 try
 {
