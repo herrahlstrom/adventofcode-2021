@@ -2,6 +2,6 @@
 
 internal interface IDay
 {
-    Task<int> FirstPart();
-    Task<int> SecondPart();
+    Task<long> FirstPart();
+    Task<long> SecondPart();
 }

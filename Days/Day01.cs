@@ -2,7 +2,7 @@
 
 internal class Day01 : IDay
 {
-    public async Task<int> FirstPart()
+    public async Task<long> FirstPart()
     {
         using var reader = new StringReader(await File.ReadAllTextAsync("Days/Input/01.txt"));
 
@@ -23,7 +23,7 @@ internal class Day01 : IDay
         return result;
     }
 
-    public async Task<int> SecondPart()
+    public async Task<long> SecondPart()
     {
         using var reader = new StringReader(await File.ReadAllTextAsync("Days/Input/01.txt"));
         int[] sliding = { 0, 0, 0 };
