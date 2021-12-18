@@ -4,6 +4,10 @@ internal class Day03 : IDay
 {
     private string? _input;
 
+
+    public int Day => 3;
+    public string Name => "Binary Diagnostic";
+
     public async Task<long> FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
@@ -115,8 +119,4 @@ internal class Day03 : IDay
             throw new Exception("Can't determin oxygen");
         }
     }
-
-
-    public int Day => 3;
-    public string Name => "Binary Diagnostic";
 }

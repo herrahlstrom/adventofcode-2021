@@ -4,6 +4,10 @@ internal class Day01 : IDay
 {
     private string? _input;
 
+    int IDay.Day => 1;
+
+    string IDay.Name => "Sonar sweep";
+
     public async Task<long> FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
@@ -61,8 +65,4 @@ internal class Day01 : IDay
 
         return result;
     }
-
-    int IDay.Day => 1;
-
-    string IDay.Name => "Sonar sweep";
 }

@@ -4,6 +4,10 @@ internal class Day02 : IDay
 {
     private string? _input;
 
+    int IDay.Day => 2;
+
+    string IDay.Name => "Dive";
+
     public async Task<long> FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
@@ -64,8 +68,4 @@ internal class Day02 : IDay
 
         return pos.X * pos.Y;
     }
-
-    int IDay.Day => 2;
-
-    string IDay.Name => "Dive";
 }
