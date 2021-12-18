@@ -30,7 +30,6 @@ internal class Day01 : IDay
         _input = await File.ReadAllTextAsync("Days/Input/01.txt");
     }
 
-
     public async Task<long> SecondPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
