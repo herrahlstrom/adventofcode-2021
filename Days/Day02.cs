@@ -8,13 +8,13 @@ internal class Day02 : IDay
 
     string IDay.Name => "Dive";
 
-    public async Task<long> FirstPart()
+    public long FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
         Point pos = new(0, 0);
 
-        while (await reader.ReadLineAsync() is { } line)
+        while (reader.ReadLine() is { } line)
         {
             string[] arr = line.Split();
             string command = arr[0];
@@ -32,19 +32,19 @@ internal class Day02 : IDay
         return pos.X * pos.Y;
     }
 
-    public async Task ReadInput()
+    public void ReadInput()
     {
-        _input = await File.ReadAllTextAsync("Days/Input/02.txt");
+        _input = File.ReadAllText("Days/Input/02.txt");
     }
 
-    public async Task<long> SecondPart()
+    public long SecondPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
         Point pos = new(0, 0);
         int aim = 0;
 
-        while (await reader.ReadLineAsync() is { } line)
+        while (reader.ReadLine() is { } line)
         {
             string[] arr = line.Split();
             string command = arr[0];

@@ -1,43 +1,39 @@
-﻿using adventofcode_2021.Days;
+﻿using System.Diagnostics;
+using adventofcode_2021.Days;
 
 var days = AppDomain.CurrentDomain.GetAssemblies()
     .SelectMany(s => s.GetTypes())
     .Where(t => t.IsClass)
     .Where(p => typeof(IDay).IsAssignableFrom(p))
-    .Select(Activator.CreateInstance).OfType<IDay>().ToArray();
+    .Select(Activator.CreateInstance).OfType<IDay>()
+    .OrderBy(x => x.Day).ToArray();
 
+long[,] results = new long[days.Length, 3];
+
+var sw = Stopwatch.StartNew();
+Parallel.For(0, days.Length, i =>
+{
+    var swDay = Stopwatch.StartNew();
+    days[i].ReadInput();
+    results[i, 0] = days[i].FirstPart();
+    results[i, 1] = days[i].SecondPart();
+    swDay.Stop();
+    results[i, 2] = swDay.ElapsedMilliseconds;
+});
+sw.Stop();
 
 Console.WriteLine("                               +--------------+--------------+");
 Console.WriteLine("                               |        FIRST |       SECOND |");
-Console.WriteLine("+------------------------------+--------------+--------------+");
+Console.WriteLine("+------------------------------+--------------+--------------+------------+");
 
 foreach (IDay day in days)
 {
-    object? firstResult;
-    object? secondResult;
-
-    await day.ReadInput();
-
-    try
-    {
-        firstResult = await day.FirstPart();
-    }
-    catch (NotImplementedException)
-    {
-        firstResult = null;
-    }
-
-    try
-    {
-        secondResult = await day.SecondPart();
-    }
-    catch (NotImplementedException)
-    {
-        secondResult = null;
-    }
-
-    Console.WriteLine("| {0:00} {1,-25} | {2,12} | {3,12} |", day.Day, day.Name, firstResult, secondResult);
-    Console.WriteLine("+------------------------------+--------------+--------------+");
+    Console.WriteLine("| {0:00} {1,-25} | {2,12} | {3,12} | {4,7} ms |", day.Day, day.Name, results[day.Day - 1, 0],
+        results[day.Day - 1, 1], results[day.Day - 1, 2]);
+    Console.WriteLine("+------------------------------+--------------+--------------+------------+");
 }
+
+Console.WriteLine("                                                             | {0,7} ms |", sw.ElapsedMilliseconds);
+Console.WriteLine("                                                             +------------+");
 
 Console.WriteLine();

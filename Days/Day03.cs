@@ -8,15 +8,15 @@ internal class Day03 : IDay
     public int Day => 3;
     public string Name => "Binary Diagnostic";
 
-    public async Task<long> FirstPart()
+    public long FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
-        string firstLine = await reader.ReadLineAsync() ?? throw new InvalidDataException();
+        string firstLine = reader.ReadLine() ?? throw new InvalidDataException();
         int[] setCounter = firstLine.Select(c => c == 1 ? 1 : 0).ToArray();
         int counter = 1;
 
-        while (await reader.ReadLineAsync() is { } line)
+        while (reader.ReadLine() is { } line)
         {
             for (int i = 0; i < line.Length; i++)
             {
@@ -38,17 +38,17 @@ internal class Day03 : IDay
         return gamma * epsilon;
     }
 
-    public async Task ReadInput()
+    public void ReadInput()
     {
-        _input = await File.ReadAllTextAsync("Days/Input/03.txt");
+        _input = File.ReadAllText("Days/Input/03.txt");
     }
 
-    public async Task<long> SecondPart()
+    public long SecondPart()
     {
         List<string> lines = new();
         using (var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized")))
         {
-            while (await reader.ReadLineAsync() is { } line)
+            while (reader.ReadLine() is { } line)
             {
                 lines.Add(line);
             }

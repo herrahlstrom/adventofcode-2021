@@ -8,14 +8,14 @@ internal class Day01 : IDay
 
     string IDay.Name => "Sonar sweep";
 
-    public async Task<long> FirstPart()
+    public long FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
         int result = 0;
 
         int lastValue = int.MaxValue;
-        while (await reader.ReadLineAsync() is { } line)
+        while (reader.ReadLine() is { } line)
         {
             int value = int.Parse(line);
             if (value > lastValue)
@@ -29,23 +29,23 @@ internal class Day01 : IDay
         return result;
     }
 
-    public async Task ReadInput()
+    public void ReadInput()
     {
-        _input = await File.ReadAllTextAsync("Days/Input/01.txt");
+        _input = File.ReadAllText("Days/Input/01.txt");
     }
 
-    public async Task<long> SecondPart()
+    public long SecondPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
         int[] sliding = { 0, 0, 0 };
         int result = 0;
 
-        sliding[1] = int.Parse(await reader.ReadLineAsync() ?? throw new InvalidDataException());
-        sliding[0] = int.Parse(await reader.ReadLineAsync() ?? throw new InvalidDataException());
+        sliding[1] = int.Parse(reader.ReadLine() ?? throw new InvalidDataException());
+        sliding[0] = int.Parse(reader.ReadLine() ?? throw new InvalidDataException());
 
         int lastSum = int.MaxValue;
-        while (await reader.ReadLineAsync() is { } line)
+        while (reader.ReadLine() is { } line)
         {
             int value = int.Parse(line);
 

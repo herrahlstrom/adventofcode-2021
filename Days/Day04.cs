@@ -7,10 +7,10 @@ internal class Day04 : IDay
     private readonly ICollection<Board> _boards = new List<Board>();
     private readonly List<int> _numbers = new();
 
-    public int Day => 1;
+    public int Day => 4;
     public string Name => "Giant Squid";
 
-    public Task<long> FirstPart()
+    public long FirstPart()
     {
         var queue = new Queue<int>(_numbers);
 
@@ -22,7 +22,7 @@ internal class Day04 : IDay
                 if (board.HasBingo())
                 {
                     int unmarkedSum = board.GetUnmarkedNumbers().Sum();
-                    return Task.FromResult<long>(unmarkedSum * n);
+                    return unmarkedSum * n;
                 }
             }
         }
@@ -30,27 +30,27 @@ internal class Day04 : IDay
         throw new NotImplementedException();
     }
 
-    public async Task ReadInput()
+    public void ReadInput()
     {
-        string input = await File.ReadAllTextAsync("Days/Input/04.txt");
+        string input = File.ReadAllText("Days/Input/04.txt");
 
         using var reader = new StringReader(input ?? throw new InvalidOperationException("Input is not initialized"));
 
-        string firstLine = await reader.ReadLineAsync() ?? throw new InvalidOperationException("Invalid input");
+        string firstLine = reader.ReadLine() ?? throw new InvalidOperationException("Invalid input");
         _numbers.AddRange(GetNumbers(firstLine));
 
-        await reader.ReadLineAsync();
+        reader.ReadLine();
 
         while (true)
         {
-            if (await reader.ReadLineAsync() is { } line1)
+            if (reader.ReadLine() is { } line1)
             {
                 Board b = new();
                 b.AddLine(0, line1);
-                b.AddLine(1, await reader.ReadLineAsync() ?? throw new InvalidOperationException());
-                b.AddLine(2, await reader.ReadLineAsync() ?? throw new InvalidOperationException());
-                b.AddLine(3, await reader.ReadLineAsync() ?? throw new InvalidOperationException());
-                b.AddLine(4, await reader.ReadLineAsync() ?? throw new InvalidOperationException());
+                b.AddLine(1, reader.ReadLine() ?? throw new InvalidOperationException());
+                b.AddLine(2, reader.ReadLine() ?? throw new InvalidOperationException());
+                b.AddLine(3, reader.ReadLine() ?? throw new InvalidOperationException());
+                b.AddLine(4, reader.ReadLine() ?? throw new InvalidOperationException());
                 _boards.Add(b);
             }
             else
@@ -58,11 +58,11 @@ internal class Day04 : IDay
                 break;
             }
 
-            await reader.ReadLineAsync();
+            reader.ReadLine();
         }
     }
 
-    public Task<long> SecondPart()
+    public long SecondPart()
     {
         var queue = new Queue<int>(_numbers);
         var boards = new List<Board>(_boards);
@@ -77,7 +77,7 @@ internal class Day04 : IDay
             if (boards.Count == 1 && boards[0].HasBingo())
             {
                 int unmarkedSum = boards[0].GetUnmarkedNumbers().Sum();
-                return Task.FromResult<long>(unmarkedSum * n);
+                return unmarkedSum * n;
             }
 
             boards.RemoveAll(b => b.HasBingo());
