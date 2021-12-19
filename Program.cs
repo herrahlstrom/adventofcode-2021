@@ -14,9 +14,21 @@ var sw = Stopwatch.StartNew();
 Parallel.For(0, days.Length, i =>
 {
     var swDay = Stopwatch.StartNew();
+    
     days[i].ReadInput();
-    results[i, 0] = days[i].FirstPart();
-    results[i, 1] = days[i].SecondPart();
+
+    try
+    {
+        results[i, 0] = days[i].FirstPart();
+    }
+    catch (NotImplementedException) { }
+
+    try
+    {
+        results[i, 1] = days[i].SecondPart();
+    }
+    catch (NotImplementedException) { }
+
     swDay.Stop();
     results[i, 2] = swDay.ElapsedMilliseconds;
 });
