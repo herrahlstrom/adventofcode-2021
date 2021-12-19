@@ -34,18 +34,18 @@ Parallel.For(0, days.Length, i =>
 });
 sw.Stop();
 
-Console.WriteLine("                               +--------------+--------------+");
-Console.WriteLine("                               |        FIRST |       SECOND |");
-Console.WriteLine("+------------------------------+--------------+--------------+------------+");
+Console.WriteLine("                               +----------------+----------------+");
+Console.WriteLine("                               |          FIRST |         SECOND |");
+Console.WriteLine("+------------------------------+----------------+----------------+------------+");
 
 foreach (IDay day in days)
 {
-    Console.WriteLine("| {0:00} {1,-25} | {2,12} | {3,12} | {4,7} ms |", day.Day, day.Name, results[day.Day - 1, 0],
+    Console.WriteLine("| {0:00} {1,-25} | {2,14} | {3,14} | {4,7} ms |", day.Day, day.Name, results[day.Day - 1, 0],
         results[day.Day - 1, 1], results[day.Day - 1, 2]);
-    Console.WriteLine("+------------------------------+--------------+--------------+------------+");
+    Console.WriteLine("+------------------------------+----------------+----------------+------------+");
 }
 
-Console.WriteLine("                                                             | {0,7} ms |", sw.ElapsedMilliseconds);
-Console.WriteLine("                                                             +------------+");
+Console.WriteLine("                                                                 | {0,7} ms |", sw.ElapsedMilliseconds);
+Console.WriteLine("                                                                 +------------+");
 
 Console.WriteLine();
