@@ -26,7 +26,7 @@ internal class Day08 : IDay
 
     public void ReadInput()
     {
-        using FileStream file = File.OpenRead("Days/Input/08.txt");
+        using FileStream file = File.OpenRead("Input/08.txt");
         using var reader = new StreamReader(file);
 
         while (!reader.EndOfStream && reader.ReadLine() is { Length: > 0 } line)

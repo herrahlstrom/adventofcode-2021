@@ -11,7 +11,7 @@ internal class Day06 : IDay
     public void ReadInput()
     {
         _initValues = File
-            .ReadAllText("Days/Input/06.txt")
+            .ReadAllText("Input/06.txt")
             .Split(',').Select(int.Parse).ToArray();
     }
 

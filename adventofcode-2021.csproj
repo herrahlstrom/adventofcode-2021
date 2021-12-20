@@ -9,13 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Days\Input\**">
+    <Content Include="Input\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Days\Input\06.txt" />
   </ItemGroup>
 
 </Project>

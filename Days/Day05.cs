@@ -43,7 +43,7 @@ internal class Day05 : IDay
 
     public void ReadInput()
     {
-        using var reader = new StreamReader("Days/Input/05.txt");
+        using var reader = new StreamReader("Input/05.txt");
         var rx = new Regex(@"^(\d+),(\d+) -> (\d+),(\d+)$");
 
         int maxX = int.MinValue;

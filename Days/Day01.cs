@@ -31,7 +31,7 @@ internal class Day01 : IDay
 
     public void ReadInput()
     {
-        _input = File.ReadAllText("Days/Input/01.txt");
+        _input = File.ReadAllText("Input/01.txt");
     }
 
     public long SecondPart()

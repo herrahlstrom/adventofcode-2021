@@ -50,7 +50,7 @@ internal class Day07 : IDay
     public void ReadInput()
     {
         _positions = File
-            .ReadAllText("Days/Input/07.txt")
+            .ReadAllText("Input/07.txt")
             .Split(',').Select(int.Parse).ToArray();
     }
 

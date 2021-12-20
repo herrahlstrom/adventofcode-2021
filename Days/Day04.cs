@@ -32,7 +32,7 @@ internal class Day04 : IDay
 
     public void ReadInput()
     {
-        string input = File.ReadAllText("Days/Input/04.txt");
+        string input = File.ReadAllText("Input/04.txt");
 
         using var reader = new StringReader(input ?? throw new InvalidOperationException("Input is not initialized"));
 
