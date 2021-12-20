@@ -8,29 +8,33 @@ var days = AppDomain.CurrentDomain.GetAssemblies()
     .Select(Activator.CreateInstance).OfType<IDay>()
     .OrderBy(x => x.Day).ToArray();
 
-long[,] results = new long[days.Length, 3];
+#if DEBUG
+days = days.Skip(days.Length - 1).ToArray();
+#endif
+
+long[,] results = new long[25, 3];
 
 var sw = Stopwatch.StartNew();
-Parallel.For(0, days.Length, i =>
+Parallel.ForEach(days, day =>
 {
     var swDay = Stopwatch.StartNew();
-    
-    days[i].ReadInput();
+
+    day.ReadInput();
 
     try
     {
-        results[i, 0] = days[i].FirstPart();
+        results[day.Day - 1, 0] = day.FirstPart();
     }
     catch (NotImplementedException) { }
 
     try
     {
-        results[i, 1] = days[i].SecondPart();
+        results[day.Day - 1, 1] = day.SecondPart();
     }
     catch (NotImplementedException) { }
 
     swDay.Stop();
-    results[i, 2] = swDay.ElapsedMilliseconds;
+    results[day.Day - 1, 2] = swDay.ElapsedMilliseconds;
 });
 sw.Stop();
 
@@ -45,7 +49,8 @@ foreach (IDay day in days)
     Console.WriteLine("+------------------------------+----------------+----------------+------------+");
 }
 
-Console.WriteLine("                                                                 | {0,7} ms |", sw.ElapsedMilliseconds);
+Console.WriteLine("                                                                 | {0,7} ms |",
+    sw.ElapsedMilliseconds);
 Console.WriteLine("                                                                 +------------+");
 
 Console.WriteLine();
