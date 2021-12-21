@@ -8,7 +8,7 @@ internal class Day03 : IDay
     public int Day => 3;
     public string Name => "Binary Diagnostic";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
@@ -43,7 +43,7 @@ internal class Day03 : IDay
         _input = File.ReadAllText("Input/03.txt");
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         List<string> lines = new();
         using (var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized")))

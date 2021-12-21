@@ -9,7 +9,7 @@ internal class Day05 : IDay
     public int Day => 5;
     public string Name => "Hydrothermal Venture";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         int[] hits = new int[GetIndex(_max) + 1];
 
@@ -66,7 +66,7 @@ internal class Day05 : IDay
         _max = new Point(maxX, maxY);
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         int[] hits = new int[GetIndex(_max) + 1];
 

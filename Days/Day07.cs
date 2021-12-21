@@ -12,7 +12,7 @@ internal class Day07 : IDay
     public int Day => 7;
     public string Name => "The Treachery of Whales";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         int min = _positions.Min();
         int max = _positions.Max();
@@ -54,7 +54,7 @@ internal class Day07 : IDay
             .Split(',').Select(int.Parse).ToArray();
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         int min = _positions.Min();
         int max = _positions.Max();

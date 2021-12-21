@@ -12,7 +12,7 @@ var days = AppDomain.CurrentDomain.GetAssemblies()
 days = days.Skip(days.Length - 1).ToArray();
 #endif
 
-long[,] results = new long[25, 3];
+object[,] results = new object[25, 3];
 
 var sw = Stopwatch.StartNew();
 Parallel.ForEach(days, day =>

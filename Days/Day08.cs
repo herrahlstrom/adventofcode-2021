@@ -6,7 +6,7 @@ internal class Day08 : IDay
     public int Day => 8;
     public string Name => "Seven Segment Search";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         int hits = 0;
 
@@ -39,7 +39,7 @@ internal class Day08 : IDay
         }
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         long sum = 0;
         foreach (Entry entry in _entries)

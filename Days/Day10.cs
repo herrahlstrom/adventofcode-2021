@@ -6,7 +6,7 @@ internal class Day10 : IDay
     public int Day => 10;
     public string Name => "Syntax Scoring";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         long score = 0;
         foreach (string line in _lines)
@@ -43,7 +43,7 @@ internal class Day10 : IDay
         }
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         List<long> scores = new();
         foreach (string line in _lines)

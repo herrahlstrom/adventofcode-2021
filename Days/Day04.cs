@@ -10,7 +10,7 @@ internal class Day04 : IDay
     public int Day => 4;
     public string Name => "Giant Squid";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         var queue = new Queue<int>(_numbers);
 
@@ -62,7 +62,7 @@ internal class Day04 : IDay
         }
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         var queue = new Queue<int>(_numbers);
         var boards = new List<Board>(_boards);

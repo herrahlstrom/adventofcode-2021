@@ -13,7 +13,7 @@ internal class Day09 : IDay
     public int Day => 9;
     public string Name => "Smoke Basin";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         long risk = 0;
 
@@ -55,7 +55,7 @@ internal class Day09 : IDay
         _values = string.Join("", lines).Select(c => c - 48).ToArray();
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         var basinCells = new HashSet<Point>();
         var basins = new List<ICollection<Point>>();

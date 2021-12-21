@@ -7,7 +7,7 @@ internal class Day11 : IDay
     public int Day => 11;
     public string Name => "Dumbo Octopus";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         int[] levels = _levels.ToArray();
         long flashCount = 0;
@@ -34,7 +34,7 @@ internal class Day11 : IDay
         }
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         int[] levels = _levels.ToArray();
 

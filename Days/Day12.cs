@@ -8,7 +8,7 @@ internal class Day12 : IDay
     public int Day => 12;
     public string Name => "Passage Pathing";
     
-    public long FirstPart()
+    public object FirstPart()
     {
         return GetPaths(0).Count();
     }
@@ -43,7 +43,7 @@ internal class Day12 : IDay
         }
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         return GetPaths(1).Count();
     }

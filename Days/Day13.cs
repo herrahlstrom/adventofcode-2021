@@ -11,7 +11,7 @@ internal class Day13 : IDay
     public int Day => 13;
     public string Name => "Transparent Origami";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         bool[,] paper = new bool[_end.X + 1, _end.Y + 1];
 
@@ -23,14 +23,11 @@ internal class Day13 : IDay
             paper[point.X, point.Y] = true;
         }
 
-        foreach (FoldInstruction instruction in _foldInstructions)
-        {
-            Fold(instruction, paper, ref width, ref height);
+        FoldInstruction instruction = _foldInstructions.First();
 
-            return Count(paper, height, width);
-        }
+        Fold(instruction, paper, ref width, ref height);
 
-        throw new InvalidOperationException();
+        return Count(paper, height, width);
     }
 
     public void ReadInput()
@@ -67,7 +64,7 @@ internal class Day13 : IDay
         }
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         bool[,] paper = new bool[_end.X + 1, _end.Y + 1];
 
@@ -96,7 +93,7 @@ internal class Day13 : IDay
             Debug.WriteLine("");
         }
 
-        throw new NotImplementedException("");
+        return "see debugger";
     }
 
     private static long Count(bool[,] paper, int height, int width)

@@ -6,7 +6,7 @@ internal class Day06 : IDay
     public int Day => 6;
     public string Name => "Lanternfish";
 
-    public long FirstPart() => SimulateDays(80);
+    public object FirstPart() => SimulateDays(80);
 
     public void ReadInput()
     {
@@ -15,7 +15,7 @@ internal class Day06 : IDay
             .Split(',').Select(int.Parse).ToArray();
     }
 
-    public long SecondPart() => SimulateDays(256);
+    public object SecondPart() => SimulateDays(256);
 
     private long SimulateDays(int days)
     {

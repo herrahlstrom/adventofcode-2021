@@ -8,7 +8,7 @@ internal class Day01 : IDay
 
     string IDay.Name => "Sonar sweep";
 
-    public long FirstPart()
+    public object FirstPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 
@@ -34,7 +34,7 @@ internal class Day01 : IDay
         _input = File.ReadAllText("Input/01.txt");
     }
 
-    public long SecondPart()
+    public object SecondPart()
     {
         using var reader = new StringReader(_input ?? throw new InvalidOperationException("Input is not initialized"));
 

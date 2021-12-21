@@ -4,7 +4,7 @@ internal interface IDay
 {
     int Day { get; }
     string Name { get; }
-    long FirstPart();
+    object FirstPart();
     void ReadInput();
-    long SecondPart();
+    object SecondPart();
 }
