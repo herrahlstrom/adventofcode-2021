@@ -169,7 +169,7 @@ internal class Day13 : IDay
 
     private class FoldInstruction
     {
-        public string Direction { get; init; }
+        public string Direction { get; init; } = "";
         public int Position { get; init; }
     }
 }
